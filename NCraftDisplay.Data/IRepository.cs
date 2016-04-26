@@ -10,5 +10,6 @@ namespace NCraftDisplay.Data
     public interface IRepository
     {
         ScoreBoard GetScores();
+        ScoreBoard GetPreviousScore();
     }
 }

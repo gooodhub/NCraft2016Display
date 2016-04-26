@@ -21,8 +21,11 @@ namespace NCraftDisplay.Controllers
 
         public ViewResult Index()
         {
+            var previousScores = this.repository.GetPreviousScore();
+            var currentScore = new ScoreBoardViewModel(this.repository.GetScores());
+            currentScore.SetPrevious(previousScores);
 
-            return View(new ScoreBoardViewModel(this.repository.GetScores()));
+            return View(currentScore);
         }
 
         public ActionResult About()

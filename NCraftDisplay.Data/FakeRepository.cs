@@ -9,9 +9,19 @@ namespace NCraftDisplay.Data
 {
     public class FakeRepository : IRepository
     {
+        ScoreBoard IRepository.GetPreviousScore()
+        {
+            return GenerateScores(DateTime.Now.Millisecond);
+        }
+
         ScoreBoard IRepository.GetScores()
         {
-            var rnd = new Random();
+            return GenerateScores(DateTime.Now.Second);
+        }
+
+        private static ScoreBoard GenerateScores(int seed)
+        {
+            var rnd = new Random(seed);
             var nbPlayers = rnd.Next(3, 20);
             var output = new ScoreBoard();
             output.Players = new List<Player>();

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using NCraftDisplay.Models;
 using Moq;
 using NCraftDisplay.Data;
+using System.Linq;
 
 namespace NCraftDisplay.Tests
 {
@@ -45,6 +46,71 @@ namespace NCraftDisplay.Tests
             var ScoreBoard = result.Model as ScoreBoardViewModel;
 
             Assert.AreEqual(1, ScoreBoard.Players.Count);
+        }
+
+        [TestMethod]
+        public void ScoreBoardViewModel_Should_Know_The_Players_Evolution()
+        {
+            var player11 = new Model.Player() { Name = "1", Score = 0 };
+            var player12 = new Model.Player() { Name = "1", Score = 50 };
+
+            var player21 = new Model.Player() { Name = "2", Score = 40 };
+            var player22 = new Model.Player() { Name = "2", Score = 40 };
+
+            var score = new Model.ScoreBoard();
+
+            score.Players = new System.Collections.Generic.List<Model.Player>()
+            {
+                player12, player22
+            };
+
+            var scorePrevious = new Model.ScoreBoard()
+            {
+                Players = new System.Collections.Generic.List<Model.Player>()
+                {
+                    player11, player21
+                }
+            };
+
+            var vm = new ScoreBoardViewModel(score);
+
+            vm.SetPrevious(scorePrevious);
+
+            var first = vm.Players.Single(p => p.Name == "1");
+
+            Assert.AreEqual(Evolution.UP, first.Evolution);
+        }
+
+        [TestMethod]
+        public void ScoreBoard_Should_Identify_New_Players()
+        {
+            var player11 = new Model.Player() { Name = "1", Score = 0 };
+            var player12 = new Model.Player() { Name = "1", Score = 50 };
+
+            var player22 = new Model.Player() { Name = "2", Score = 40 };
+
+            var score = new Model.ScoreBoard();
+
+            score.Players = new System.Collections.Generic.List<Model.Player>()
+            {
+                player12, player22
+            };
+
+            var scorePrevious = new Model.ScoreBoard()
+            {
+                Players = new System.Collections.Generic.List<Model.Player>()
+                {
+                    player11
+                }
+            };
+
+            var vm = new ScoreBoardViewModel(score);
+
+            vm.SetPrevious(scorePrevious);
+
+            var first = vm.Players.Single(p => p.Name == "2");
+
+            Assert.AreEqual(Evolution.NEW, first.Evolution);
         }
     }
 }

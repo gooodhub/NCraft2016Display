@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NCraftDisplay.Data;
+using NCraftDisplay.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,19 @@ namespace NCraftDisplay.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private IRepository repository;
+
+        public HomeController(IRepository repository)
         {
-            return View();
+            this.repository = repository;
+        }
+
+        public HomeController() : this(new FakeRepository()) {   }
+
+        public ViewResult Index()
+        {
+
+            return View(new ScoreBoardViewModel(this.repository.GetScores()));
         }
 
         public ActionResult About()

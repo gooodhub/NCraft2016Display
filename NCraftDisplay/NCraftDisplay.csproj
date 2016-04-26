@@ -124,6 +124,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlayerViewModel.cs" />
+    <Compile Include="Models\ScoreBoardViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,12 +185,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NCraftDisplay.Data\NCraftDisplay.Data.csproj">
+      <Project>{e8d3f0fd-78a0-45f2-a4de-fe8688a752ea}</Project>
+      <Name>NCraftDisplay.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NCraftDisplay.Model\NCraftDisplay.Model.csproj">
+      <Project>{9CE6CD3D-8D1C-4ABC-A982-445E6A705F1E}</Project>
+      <Name>NCraftDisplay.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

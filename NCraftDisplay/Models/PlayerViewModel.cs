@@ -19,6 +19,16 @@ namespace NCraftDisplay.Models
         public int Rank { get { return this.rank; } }
 
         public Evolution Evolution { get; set; }
+        public string EvolutionClass
+        {
+            get
+            {
+                return  Evolution == Evolution.UP ?         "glyphicon glyphicon-arrow-up text-success" :
+                        Evolution == Evolution.DOWN ?       "glyphicon glyphicon-arrow-down text-danger" :
+                        Evolution == Evolution.NOTHING ?    "glyphicon glyphicon-arrow-right text-warning" :
+                                                            "glyphicon glyphicon-share-alt text-primary";
+            }
+        }
 
         public PlayerViewModel(Player p)
         {

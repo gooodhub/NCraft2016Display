@@ -19,6 +19,14 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @*@RenderSection("scripts", required: false)*@
+
+    <script type="text/javascript">
+    $(function () {
+        setInterval(function () {
+            $("#mainContainer").load("/Home/GetScores");
+        }, 3000);
+    })
+    </script> 
 </body>
 </html>

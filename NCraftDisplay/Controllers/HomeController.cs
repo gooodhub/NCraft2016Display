@@ -2,6 +2,7 @@
 using NCraftDisplay.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,7 @@ namespace NCraftDisplay.Controllers
             this.repository = repository;
         }
 
-        public HomeController() : this(new FakeRepository()) {   }
+        public HomeController() : this(new CsvFileRepository(ConfigurationManager.AppSettings["CsvFilesLocation"])) {   }
 
         public ViewResult Index()
         {
@@ -28,7 +29,7 @@ namespace NCraftDisplay.Controllers
 
         private ScoreBoardViewModel GetCompleteScoreBoard()
         {
-            var previousScores = this.repository.GetPreviousScore();
+            var previousScores = this.repository.GetPreviousScores();
             var currentScore = new ScoreBoardViewModel(this.repository.GetScores());
             currentScore.SetPrevious(previousScores);
             return currentScore;

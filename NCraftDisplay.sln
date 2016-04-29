@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCraftDisplay.Data", "NCraf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCraftDisplay.Model", "NCraftDisplay.Model\NCraftDisplay.Model.csproj", "{9CE6CD3D-8D1C-4ABC-A982-445E6A705F1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCraftdisplay.IntegrationTests", "NCraftdisplay.IntegrationTests\NCraftdisplay.IntegrationTests.csproj", "{6B5F758C-5CD4-4CE2-8F46-B9A1E96E3776}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9CE6CD3D-8D1C-4ABC-A982-445E6A705F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CE6CD3D-8D1C-4ABC-A982-445E6A705F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CE6CD3D-8D1C-4ABC-A982-445E6A705F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5F758C-5CD4-4CE2-8F46-B9A1E96E3776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5F758C-5CD4-4CE2-8F46-B9A1E96E3776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5F758C-5CD4-4CE2-8F46-B9A1E96E3776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5F758C-5CD4-4CE2-8F46-B9A1E96E3776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,7 @@ namespace NCraftDisplay.Data
 {
     public class FakeRepository : IRepository
     {
-        ScoreBoard IRepository.GetPreviousScore()
+        ScoreBoard IRepository.GetPreviousScores()
         {
             return GenerateScores(DateTime.Now.Millisecond);
         }
@@ -36,6 +36,11 @@ namespace NCraftDisplay.Data
             }
 
             return output;
+        }
+
+        void IRepository.Save(ScoreBoard scoreBoard)
+        {
+            throw new NotImplementedException();
         }
     }
 }

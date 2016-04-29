@@ -12,6 +12,8 @@ namespace NCraftDisplay.Models
 
         public List<PlayerViewModel> Players { get; set; }
 
+        public DateTime LatestBatch { get { return DateTime.Now; } }
+
         public ScoreBoardViewModel(ScoreBoard scoreBoard)
         {
             this.scoreBoard = scoreBoard;

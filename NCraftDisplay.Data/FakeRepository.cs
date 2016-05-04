@@ -42,5 +42,10 @@ namespace NCraftDisplay.Data
         {
             throw new NotImplementedException();
         }
+
+        public void Save(List<Player> players)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

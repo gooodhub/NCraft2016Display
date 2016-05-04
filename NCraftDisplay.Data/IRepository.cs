@@ -1,9 +1,5 @@
-﻿using NCraftDisplay.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using NCraftDisplay.Model;
 
 namespace NCraftDisplay.Data
 {
@@ -12,5 +8,6 @@ namespace NCraftDisplay.Data
         ScoreBoard GetScores();
         ScoreBoard GetPreviousScores();
         void Save(ScoreBoard scoreBoard);
+        void Save(List<Player> players);
     }
 }

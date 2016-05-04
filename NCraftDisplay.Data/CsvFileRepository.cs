@@ -64,5 +64,15 @@ namespace NCraftDisplay.Data
                 Players = castedPlayers
             };
         }
+
+        public void Save(List<Player> players)
+        {
+            var score = new ScoreBoard()
+            {
+                Players = players
+            };
+
+            Save(score);
+        }
     }
 }

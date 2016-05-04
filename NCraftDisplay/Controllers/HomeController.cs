@@ -18,7 +18,8 @@ namespace NCraftDisplay.Controllers
             this.repository = repository;
         }
 
-        public HomeController() : this(new CsvFileRepository(ConfigurationManager.AppSettings["CsvFilesLocation"])) {   }
+        public HomeController() : this(new FakeRepository()) { }
+            //this(new CsvFileRepository(ConfigurationManager.AppSettings["CsvFilesLocation"])) {   }
 
         public ViewResult Index()
         {

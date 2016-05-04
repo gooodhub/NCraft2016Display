@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConsoleRunnerShould.cs" />
+    <Compile Include="GameGeneratorShould.cs" />
     <Compile Include="TestCases\BasicAI.cs" />
     <Compile Include="TestCases\CrashingAI.cs" />
     <Compile Include="TestCases\MirrorInputAI.cs" />

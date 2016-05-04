@@ -50,6 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ConsoleRunnerShould.cs" />
+    <Compile Include="TestCases\BasicAI.cs" />
+    <Compile Include="TestCases\CrashingAI.cs" />
+    <Compile Include="TestCases\MirrorInputAI.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +66,10 @@
       <Project>{9ce6cd3d-8d1c-4abc-a982-445e6a705f1e}</Project>
       <Name>NCraftDisplay.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="TestCases\_buildAIs.cmd" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CsvFileRepository.cs" />
     <Compile Include="CSVModel\Player.cs" />
+    <Compile Include="Engine\ConsoleRunner.cs" />
     <Compile Include="FakeRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

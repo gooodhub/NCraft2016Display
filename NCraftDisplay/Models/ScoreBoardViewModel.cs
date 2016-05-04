@@ -12,11 +12,12 @@ namespace NCraftDisplay.Models
 
         public List<PlayerViewModel> Players { get; set; }
 
-        public DateTime LatestBatch { get { return DateTime.Now; } }
+        public DateTime LatestBatch { get; }
 
         public ScoreBoardViewModel(ScoreBoard scoreBoard)
         {
             this.scoreBoard = scoreBoard;
+            LatestBatch = scoreBoard.BatchDateTime;
             var rank = 0;
 
             if (this.scoreBoard != null && this.scoreBoard.Players != null)

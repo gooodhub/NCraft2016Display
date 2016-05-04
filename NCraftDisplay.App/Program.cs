@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -14,13 +15,15 @@ namespace NCraftDisplay.App
 {
     class Program
     {
+        private const int Duration = 10;
         private static ILog logger = LogManager.GetLogger("file");
+        private static int _duration;
 
         static void Main(string[] args)
         {
             var playerDirectories = Directory.GetDirectories(ConfigurationManager.AppSettings["ExeRepository"]);
-            var scoreHelper = new FakeScoreHelper();
-            var players = new List<Player>();
+            var scoreHelper = new ScoreHelper();
+            var players = new ConcurrentBag<KeyValuePair<Player, string>>();
             var repo = new CsvFileRepository(ConfigurationManager.AppSettings["CsvFileLocation"]);
 
             foreach (var playerDirectory in playerDirectories)
@@ -41,22 +44,12 @@ namespace NCraftDisplay.App
                 }
                 var exeFile = exeFiles.Single();
 
-                player.Score = scoreHelper.Execute(exeFile);
-
-                Console.WriteLine(exeFile);
-                players.Add(player);
+                players.Add(new KeyValuePair<Player, string>(player, exeFile));
             }
+            
+            Parallel.ForEach(players, p => p.Key.Score = scoreHelper.Execute(p.Value, Duration));
 
-            repo.Save(players);
-            Console.ReadLine();
-        }
-    }
-
-    internal class FakeScoreHelper
-    {
-        public int Execute(string exeFile)
-        {
-            return new Random(DateTime.Now.Millisecond).Next(100, 2000);
+            repo.Save(players.Select(p => p.Key).ToList());
         }
     }
 }

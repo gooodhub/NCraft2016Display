@@ -2,19 +2,18 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12" id="mainContainer">
-            @Html.Partial("ResultsView", Model)
+        <div class="col-lg-2">
+            <img  style="height: 120px" src="~/Content/img/logo.png" alt="Logo GoooD!"/>
         </div>
+        <div class="col-lg-8">
+            <div class="text-center h1">Battleship Contest Scoreboard</div>
+        </div>
+        <div class="col-lg-2">
+            <img style="height: 120px" src="~/Content/img/ncraft.png" alt="Logo Ncraft" />
+        </div>
+
     </div>
-    <div class="row">
-        <div class="col-lg-12 label label-success">
-            <span class="glyphicon glyphicon-check"></span> Latest batch : @Model.LatestBatch
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 label label-warning">
-            <span class="glyphicon glyphicon-warning-sign"></span> Next batch in : XX minute(s)
-        </div>
+    <div class="row" id="mainContainer">
+        @Html.Partial("ResultsView", Model)
     </div>
 </div>
-

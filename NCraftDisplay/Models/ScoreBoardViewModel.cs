@@ -13,6 +13,7 @@ namespace NCraftDisplay.Models
         public List<PlayerViewModel> Players { get; set; }
 
         public DateTime LatestBatch { get; }
+        public DateTime NextBatch { get { return LatestBatch.AddMinutes(5.0); } }
 
         public ScoreBoardViewModel(ScoreBoard scoreBoard)
         {

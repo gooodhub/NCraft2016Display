@@ -15,7 +15,7 @@ namespace NCraftDisplay.App
 {
     class Program
     {
-        private const int Duration = 10;
+        private const int Duration = 1;
         private static ILog logger = LogManager.GetLogger("file");
         private static int _duration;
 

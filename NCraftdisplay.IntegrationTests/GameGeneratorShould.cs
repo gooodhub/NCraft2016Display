@@ -14,7 +14,7 @@ namespace NCraftdisplay.IntegrationTests
         [TestMethod]
         public void Board_is_generated_correctly()
         {
-            var gen = new GameGenerator();
+            var gen = new BoardGenerator();
             gen.MakeBoard();
             var result = gen.PrintBoard();
 

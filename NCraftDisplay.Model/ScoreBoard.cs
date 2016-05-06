@@ -8,6 +8,11 @@ namespace NCraftDisplay.Model
 {
     public class ScoreBoard
     {
+        public ScoreBoard()
+        {
+            Players = new List<Player>();
+        }
+
         public List<Player> Players { get; set; }
         public DateTime BatchDateTime { get; set; }
     }

@@ -21,13 +21,13 @@ namespace NCraftDisplay.Data.Engine
         internal char Symbol { get; set; }
     }
 
-    public class GameGenerator
+    public class BoardGenerator
     {
         private List<Cell> _board;
 
         private Random _rng;
 
-        public GameGenerator()
+        public BoardGenerator()
         {
             _board = Enumerable.Range(0, 100)
                 .Select(x => new Cell { Row = x / 10, Col = x % 10, Symbol = '.' })

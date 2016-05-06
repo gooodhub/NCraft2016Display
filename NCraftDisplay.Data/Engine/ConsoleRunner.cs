@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
 using System.Text;
+using System.Threading;
 
 namespace NCraftDisplay.Data.Engine
 {
     public class ConsoleRunner : IDisposable
     {
         private readonly Process _proc;
-
-        private readonly StringBuilder _outBuff;
-
-        private StreamWriter inputBuff;
 
         public ConsoleRunner(string exePath)
         {
@@ -26,47 +26,37 @@ namespace NCraftDisplay.Data.Engine
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 RedirectStandardInput = true,
-                RedirectStandardOutput = true
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
             };
-            _outBuff = new StringBuilder();
+
+            _proc.EnableRaisingEvents = false;
         }
 
-        public string GetOutPut()
+        public void StartProgram()
         {
-            var result = _outBuff.ToString();
-            _outBuff.Clear();
-            return result;
-        }
-
-        public void Start()
-        {
-            _proc.OutputDataReceived += new DataReceivedEventHandler(MessagePosted);
             _proc.Start();
-            inputBuff = _proc.StandardInput;
-            _proc.BeginOutputReadLine();
         }
 
-        public void WaitForExit(int timeoutMs)
+        public IObservable<string> ProgramOutput()
         {
-            _proc.WaitForExit(timeoutMs);
-            if (_proc != null)
-            {
-                _proc.Kill();
-                _proc.Dispose();
-            }
+            return ProgramOutput(_proc);
         }
 
-        public void SendMsg(string msg)
+        public void SendMessage(string message)
         {
-            inputBuff.WriteLine("O");
+            if (!_proc.HasExited)
+                _proc.StandardInput.WriteLine(message);
         }
 
-        public void MessagePosted(object sendingProcess, DataReceivedEventArgs args)
+        private IObservable<string> ProgramOutput(Process proc)
         {
-            if (!string.IsNullOrWhiteSpace(args.Data))
-            {
-                _outBuff.Append(args.Data);
-            }
+            return Observable.FromAsync(proc.StandardOutput.ReadLineAsync)
+                .Sample(TimeSpan.FromMilliseconds(50))
+                .Repeat(100)
+                .Publish()
+                .RefCount()
+                .SubscribeOn(Scheduler.Default);
         }
 
         private bool disposedValue = false; // To detect redundant calls
@@ -77,6 +67,9 @@ namespace NCraftDisplay.Data.Engine
             {
                 if (disposing)
                 {
+                    if (!_proc.HasExited)
+                        _proc.Kill();
+
                     _proc.Dispose();
                 }
 

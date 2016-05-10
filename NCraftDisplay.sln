@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D0FD187C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCraftDisplay.App", "NCraftDisplay.App\NCraftDisplay.App.csproj", "{CA9459A3-FE53-4409-B4E8-9A123E1AC1DF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Algos", "Algos", "{5B4189BB-D22A-4CAB-BA69-A1D07E2B23A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NcraftDisplay.Algos.Random", "NcraftDisplay.Algos.Random\NcraftDisplay.Algos.Random.csproj", "{58F67A8D-9EC3-45CA-9A98-F3300D523593}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{CA9459A3-FE53-4409-B4E8-9A123E1AC1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA9459A3-FE53-4409-B4E8-9A123E1AC1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA9459A3-FE53-4409-B4E8-9A123E1AC1DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58F67A8D-9EC3-45CA-9A98-F3300D523593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58F67A8D-9EC3-45CA-9A98-F3300D523593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58F67A8D-9EC3-45CA-9A98-F3300D523593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58F67A8D-9EC3-45CA-9A98-F3300D523593}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +62,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DB55B7CD-1E21-429A-B938-C21D5B57803E} = {D0FD187C-5637-43E3-8969-7DF7810BDE28}
 		{6B5F758C-5CD4-4CE2-8F46-B9A1E96E3776} = {D0FD187C-5637-43E3-8969-7DF7810BDE28}
+		{58F67A8D-9EC3-45CA-9A98-F3300D523593} = {5B4189BB-D22A-4CAB-BA69-A1D07E2B23A9}
 	EndGlobalSection
 EndGlobal
